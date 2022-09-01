@@ -1,0 +1,3 @@
+Recursive adalah function dapat memanggil diri sendiri berulang kali. jika masalah kecil dan terlalu besar ia akan menghasilkan jawaban segera. secara perumpaaan recursive sama dengan literasi dengan cara kerjanya sama. recursive punya strategi sendiri yaitu Base case dan Recurrence relations.
+number theory adalah cabang dari ilmu matematika yang mempelajari interger, banyak teori yang mempelajari Number Theori ini seperti Bilangan Prima,Pembagi Persekutuan Terbesar,Kelipatan Persekutuan Terkecil,Faktorial,prima, dll.
+Set adalah kumpulan elemen yang berbeda yang didefinisikan dengan baik,, dianggap sebagai elemen dalam dirinya sendiri dan Map adalah peta/ kamus. Sorting adalah perhitungan data komputasi yang biasa digunakan. dan Searching adalah 
