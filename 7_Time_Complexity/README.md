@@ -1,0 +1,3 @@
+Time Complexity adalah ukuran waktu berapa lama operasi operasi dapat dilakukan. operasi berupa aritmatika, operasi the dominant seperti For (perulangan).
+perbedaan Time Complexity : Constant Time adalah tidak dapat proses perulangan atau dilakukan hanya sekali. Linear Time : proses perulangan hingan nilai N. Logarithmic Time : adalah menerima input N. Quadratic Time : memiliki kompleksitas kuadrat
+Space Complexity adalah batasan memori tentang kompleksitas ruang yang diharapkan. jika kita memiliki jumlah variabel yang konstan, kita memiliki ruang untuk mendeklarasikan.
