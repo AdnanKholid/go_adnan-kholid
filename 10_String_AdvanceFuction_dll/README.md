@@ -1,0 +1,3 @@
+String salah satu variable penting dibahasa pemograman.
+Advance Function. variatic function: ketika kita memanggil sebuah function tetpai function ini berbeda beda. literal function banyak dipake saat membuat project.
+Pointer adalah sebuah variable yg dapat menyimpan memory addres dari variable yg lain. Sturct and Interface adalah tipe yang ditentukan pengguna yang berisa kumpulan bidang atau fungsi(metode bernama).salah satunya yaitu Declaration Struct. Method adalah fungsi yang melekat pada suatu tipe (bisa berupa struct atau tipe data lainya).
