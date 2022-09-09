@@ -1,0 +1,4 @@
+Goroutunes adalah fungsi atau metode yang berjallan secara bersamaan(independen) dengan fungsi atau metode lain. yaitu biaya pembuatan goroutine sangat kecil jika dibandingkan dengan thread. Thread adalah proses yang ringan, atau dengan kata lain, thread adalah unit yang mengeksekusi kode dibawah program.
+Channels and Select, Channel adalah objek komunikasi yang digunakan goroutine untuk berkomunikasi satu sama lain.sedangkan Select adalah memudahkan untuk mengontrol komunikasi data melalui satu atau banyak saluran.
+Race Condition adalah dimana 2 threads mengaksesmemori sekaligus,salah satunya adalah menulis, kondisi balapan terjadi karena tidak sinkron
+Fixing Data ada tiga macam yaitu WaitGroups, ChannelsBlocking, Mutex
