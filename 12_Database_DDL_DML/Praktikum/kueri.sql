@@ -44,7 +44,7 @@ CREATE TABLE payment_method(
     name_payment_method VARCHAR(255) NOT NULL);
 
 --nomer 2.2.c
-CREATE TABLE transaction(
+CREATE TABLE transaksi(
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     payment_method_id int NOT NULL,
@@ -54,11 +54,11 @@ CREATE TABLE transaction(
     FOREIGN KEY (user_id) REFERENCES payment_method(id),
     FOREIGN KEY (payment_method_id) REFERENCES payment_method(id));
 
-CREATE TABLE transaction detail(
+CREATE TABLE detail_transaksi(
     id INT PRIMARY KEY AUTO_INCREMENT,
     transaksi_id INT NOT NULL,
     product_id INT NOT NULL,
-    total_product INT NOT null,
+    total_product INT NOT NULL,
     FOREIGN KEY (transaksi_id) REFERENCES transaksi(id),
     FOREIGN KEY (product_id) REFERENCES product(id));
 
