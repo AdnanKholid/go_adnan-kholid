@@ -1,0 +1,30 @@
+#!/bin/bash
+folder_utama="$1 at $(date)"
+
+mkdir "$folder_utama"
+
+# membuat direktori about_me 
+mkdir ./"$folder_utama"/about_me
+
+# membuat direktori personal dan professional
+mkdir ./"$folder_utama"/about_me/personal
+mkdir ./"$folder_utama"/about_me/professional
+
+# membuat file facebook.txt dan linkedin.txt
+echo "https://www.facebook.com/"$2 > ./"$folder_utama"/about_me/personal/facebook.txt
+echo "https://www.linkedin.com/in/"$3 > ./"$folder_utama"/about_me/professional/linkedin.txt
+
+# membuat direktori my_friends dan mengambil daftar nama teman dari git
+mkdir ./"$folder_utama"/my_friends
+curl -o  ./"$folder_utama"/my_friends/list_of_my_friends.txt https://gist.githubusercontent.com/tegarimansyah/e91f335753ab2c7fb12815779677e914/raw/94864388379fecee450fde26e3e73bfb2bcda194/list%2520of%2520my%2520friends.txt
+
+# membuat direktori my_system_info
+mkdir ./"$folder_utama"/my_system_info
+
+# membuat file about_this_laptop.txt dan internet_connection.txt
+echo "My username:  $(whoami)" > ./"$folder_utama"/my_system_info/about_this_laptop.txt
+echo "With host:  $(uname -a)" >> ./"$folder_utama"/my_system_info/about_this_laptop.txt
+
+# membuat file internet_connection.txt
+echo "Connection to google:" > ./"$folder_utama"/my_system_info/internet_connection.txt
+ping -c 3 google.com >> ./"$folder_utama"/my_system_info/internet_connection.txt
