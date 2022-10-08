@@ -3,7 +3,7 @@ package router
 import (
 	"echo-api/controller"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 func New() *echo.Echo {

@@ -2,12 +2,11 @@ package controller
 
 import (
 	"echo-api/config"
-	"echo-api/handler"
 	"echo-api/model"
 	"net/http"
 	"strconv"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 func GetBooksController(c echo.Context) error {
@@ -24,27 +23,20 @@ func GetBooksController(c echo.Context) error {
 
 func GetBookController(c echo.Context) error {
 	var book model.Book
-	id := c.Param("id")
-	convId, err := strconv.Atoi(id)
-	if err != nil {
-		return c.JSON(http.StatusBadRequest, handler.Response{
-			Message: err.Error(),
-			Code:    http.StatusBadRequest,
+
+	id, _ := strconv.Atoi(c.Param("id"))
+
+	config.DB.First(&book, "id = ?", id)
+
+	if book.ID == 0 {
+		return c.JSON(http.StatusNotFound, map[string]interface{}{
+			"messages": "Book not Found",
 		})
 	}
 
-	q := config.DB.First(&book, convId).Error
-	if q != nil {
-		return c.JSON(http.StatusNotFound, handler.Response{
-			Message: q.Error(),
-			Code:    http.StatusNotFound,
-		})
-	}
-
-	return c.JSON(http.StatusOK, handler.Response{
-		Message: "success",
-		Result:  book,
-		Code:    http.StatusOK,
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"message": "success get book",
+		"user":    book,
 	})
 }
 
@@ -64,48 +56,34 @@ func CreateBookController(c echo.Context) error {
 
 func DeleteBookController(c echo.Context) error {
 	var book model.Book
+	c.Bind(&book)
 
-	id := c.Param("id")
-	convId, err := strconv.Atoi(id)
-	if err != nil {
-		return c.JSON(http.StatusBadRequest, handler.Response{
-			Message: err.Error(),
-			Code:    http.StatusBadRequest,
-		})
-	}
+	id, _ := strconv.Atoi(c.Param("id"))
+	config.DB.First(&book, "id = ?", id)
+	config.DB.Delete(&book)
 
-	config.DB.Where("id = ?", convId).Delete(&book)
-
-	return c.JSON(http.StatusOK, handler.Response{
-		Message: "success",
-		Result:  book,
-		Code:    http.StatusOK,
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"message": "success delete book",
 	})
+
 }
 
 func UpdateBookController(c echo.Context) error {
 	book := model.Book{}
-	if err := c.Bind(&book); err != nil {
-		return c.JSON(http.StatusUnsupportedMediaType, handler.Response{
-			Message: err.Error(),
-			Code:    http.StatusUnsupportedMediaType,
+	id, _ := strconv.Atoi(c.Param("id"))
+	config.DB.First(&book, id)
+
+	if book.ID == 0 {
+		return c.JSON(http.StatusOK, map[string]interface{}{
+			"messages": "invalid id",
 		})
 	}
+	c.Bind(&book)
 
-	id := c.Param("id")
-	convId, err := strconv.Atoi(id)
-	if err != nil {
-		return c.JSON(http.StatusBadRequest, handler.Response{
-			Message: err.Error(),
-			Code:    http.StatusBadRequest,
-		})
-	}
+	config.DB.Save(&book)
 
-	config.DB.Model(&book).Where("id = ?", convId).Updates(book)
-
-	return c.JSON(http.StatusOK, handler.Response{
-		Message: "success",
-		Result:  book,
-		Code:    http.StatusOK,
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"message": "success update book",
+		"book":    book,
 	})
 }

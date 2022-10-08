@@ -9,7 +9,7 @@ import (
 	"echo-api/middleware"
 	"echo-api/model"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 func GetUsersController(c echo.Context) error {
